@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <style type="text/css">
+    tr:hover {background-color: #ddd;}
+
+th,tr,td{
+border:2px solid black;
+text-align:left;
+text-style:Times New Roman;
+border-color:black;
+padding:1px 2px;
+}
+th{
+background-color: #4CAF50;
+}
+header{
+padding:30px;
+background-color:#EEE;
+}
+
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+  </style>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -18,6 +45,7 @@ if ($conn->connect_error) {
 }
 
 ?>
+<center>
 <table>
 <tr> 
    <th> Company Name </th>
@@ -43,12 +71,7 @@ $result=mysqli_query($conn,$sql1);
 <td><?php echo $item['Hrname'] ; ?>  </td>
 <td><?php echo $item['address']; ?> </td>
 <!--<td><?php echo $item['image']; ?> </td>-->
-<td>
-<?php 
-$image = $item['image'];
-$image_src = "upload/".$image;
-?>
-<img src='<?php echo $image_src;  ?>' >  
+<td><a href="uploads/<?php echo $item['image'] ?>" target="_blank">view file</a></td> 
 </td>
 <td><?php echo $item['password'] ;?></td>
 
@@ -56,6 +79,6 @@ $image_src = "upload/".$image;
 
 <?php endforeach; ?>
 </table>
-		
+		</center>
 </body>
 </html>
