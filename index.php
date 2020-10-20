@@ -29,7 +29,6 @@ table#t01 tr:nth-child(even) {
 }
   </style>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <?php
