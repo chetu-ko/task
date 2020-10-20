@@ -59,34 +59,77 @@ padding:3px;
 }
 
 </style>
+<meta charset="UTF-8">
 </head>
 <html>
-<body>
-<h1 style="text-align:center"> ENTER DATA FOR REGISTRATION </h1> 
-<form method="post" action="details.php" enctype="multipart/form-data">
-<br>
-<br>
-<br>
-<div class="n">
-<label for="Cname"> Company Name: </label>
-<input type="text"  name="Cname" pattern="[a-zA-Z]{3,}" title="Special char not allowed" required> </br> </br>
-<label for="Email"> Email: </label>
-&nbsp;&nbsp;&nbsp;<input type="Email"  name="Email" required> </br> </br>
-<label for="Mobile"> Mobile: </label>
-&nbsp;&nbsp;&nbsp;<input type="tel"  name="Mobile" pattern="[7-9]{1}[0-9]{9}" 
-       title="Phone number with 7-9 and remaing 9 digit with 0-9" required> </br> </br>
-<label for="Hrname"> HR name: </label>
-<input type="text"  name="Hrname" pattern="[a-zA-Z]{3,}" title="Special char not allowed" required> </br> </br>
-<label for="Address"> Address: </label>
-&nbsp;&nbsp;&nbsp;<input type="text"  name="address" required> </br> </br>
-<label for="File"> File: </label>
-<input type="file"  name="image" required> </br> </br>
-<label for="password"> Password: </label>
-<input type="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"required> </br> </br>
-<button type="submit" value="submit" name="enter"> submit </button>
+  <body>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#txtName").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
  
-</div>
-</form>
-</body>
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Only Alphabets and Numbers allowed and it's not allowed even enter button.");
+            }
+ 
+            return isValid;
+        });
+    });
+     $(function () {
+        $("#txt").keypress(function (e) {
+            var keyCode = e.keyCode || e.which;
+ 
+            $("#lblError").html("");
+ 
+            //Regex for Valid Characters i.e. Alphabets and Numbers.
+            var regex = /^[A-Za-z0-9]+$/;
+ 
+            //Validate TextBox value against the Regex.
+            var isValid = regex.test(String.fromCharCode(keyCode));
+            if (!isValid) {
+                $("#lblError").html("Only Alphabets and Numbers allowed and it's not allowed even enter button.");
+            }
+ 
+            return isValid;
+        });
+    });
+</script>
+
+    <h1 style="text-align:center"> ENTER DATA FOR REGISTRATION </h1> 
+    <form method="post" action="details.php" enctype="multipart/form-data">
+    <br><br><br>
+        <div class="n">
+            <span id="lblError"></span>
+            
+            <label for="Cname"> Company Name: </label>
+                <input type="text" name="Cname" pattern="[a-zA-Z]{3,}" id="txt" title="Special char not allowed" required> </br> </br>
+            <label for="Email"> Email: </label>
+                &nbsp;&nbsp;&nbsp;<input type="email"  name="Email" 
+                pattern="[a-zA-Z0-9]{3,}@vola.com" title="gmail,yahoo,redif are not allowed to enter. example@vola.com" required> </br> </br>
+            <label for="Mobile"> Mobile: </label>
+                &nbsp;&nbsp;&nbsp;<input type="tel" name="Mobile" pattern="[7-9]{1}[0-9]{9}" 
+            title="Phone number with 7-9 and remaing 9 digit with 0-9" required> </br> </br>
+            
+            <label for="Hrname"> HR name: </label>
+            <span id="lblError"></span>
+                <input type="text"  name="Hrname" pattern="[a-zA-Z]{3,}" id="txtName" title="Special char not allowed" required> </br> </br>
+            <label for="Address"> Address: </label>
+                    &nbsp;&nbsp;&nbsp;<input type="text"  name="address" required> </br> </br>
+            <label for="File"> File: </label>
+                <input type="file" name="files[]" multiple required> </br> </br>
+            <label for="password"> Password: </label>
+                <input type="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"required> </br> </br>
+                <button type="submit" value="submit" name="enter"> submit </button>
+ 
+            </div>
+        </form>
+    </body>
 </html>
