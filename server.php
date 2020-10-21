@@ -20,8 +20,6 @@ if (isset($_POST['enter']))
     $address  = $_POST['address'];
     $password  = $_POST['password'];
     $password_encrypt = md5($password);
-
-
     
     $upload_dir = 'uploads'.DIRECTORY_SEPARATOR; 
 
